@@ -43,7 +43,19 @@ class ActivityTest < Minitest::Test
 
     activity.add_participant("Jim", 20)
     activity.add_participant("Joe", 40)
-    
+
     assert_equal ({"Jim" => 20, "Joe" => 40}), activity.participants
   end
+
+  def test_it_can_split_the_cost_of_activities
+    
+    activity = Activity.new("Brunch")
+
+    activity.add_participant("Jim", 20)
+    activity.add_participant("Joe", 40)
+    assert_equal 60, activity.total_cost
+
+    assert_equal 30, activity.split
+  end
+
 end

@@ -6,18 +6,22 @@ class Activity
   def initialize(name)
     @name = name
     @participants = {}
+    @total_cost = 0
   end
 
-  def add_participant(name, cost)
-    @participants[name] = cost
+  def add_participant(name, paid)
+    @participants[name] = paid
   end
 
   def total_cost
-    total_cost = 0
-    @participants.each do |name, cost|
-      total_cost += cost
+    @participants.each do |name, paid|
+      @total_cost += paid
     end
-    total_cost
+    @total_cost
+  end
+
+  def split
+    @total_cost / @participants.count
   end
 
 end
