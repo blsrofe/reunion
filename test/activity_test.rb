@@ -37,4 +37,13 @@ class ActivityTest < Minitest::Test
 
     assert_equal 20, activity.total_cost
   end
+
+  def test_it_can_add_multiple_participants
+    activity = Activity.new("Brunch")
+
+    activity.add_participant("Jim", 20)
+    activity.add_participant("Joe", 40)
+    
+    assert_equal ({"Jim" => 20, "Joe" => 40}), activity.participants
+  end
 end
